@@ -1,5 +1,7 @@
 from random import choice
 from primes import primes_list
+from text_to_numbers import text_to_int
+from text_to_numbers import int_to_text
 
 
 def mcd_extended_euclidian(a, b):
@@ -72,13 +74,18 @@ for e in generate_e(phi):
     if e != d and phi % d != 0 and d > 2 and e > 2:
         break
 
-msg = [25, 102, 7, 102, 93, 49, 91, 49, 92, 118, 23, 13, 10]
+# msg = [25, 102, 7, 102, 93, 49, 91, 49, 92, 118, 23, 13, 10]
+msg = input()
+msg_numbers = text_to_int(msg)
 
-msg_encoded = [RSA(msg[i], n, e) for i in range(len(msg))]
-print(msg_encoded)
+msg_encoded = [RSA(msg_numbers[i], n, e) for i in range(len(msg_numbers))]
+# print(msg_encoded)
 
 msg_decoded = [RSA(msg_encoded[i], n, d) for i in range(len(msg_encoded))]
-print(msg_decoded)
+# print(msg_decoded)
+
+msg_text = int_to_text(msg_decoded)
+print(msg_text)
 
 """
 Teste com valores do livro:
