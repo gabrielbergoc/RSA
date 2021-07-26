@@ -54,36 +54,23 @@ d é privado e é usado para decodificar a mensagem juntamente com n;
 list_of_primes = primes_list(100)
 
 p = choice(list_of_primes[10:])
-print(p)
-
 q = choice(list_of_primes[10:])
 
 while p == q:
     q = choice(list_of_primes[10:])
-print(q)
 
 n = p * q
-print(n)
 
 phi = (p - 1) * (q - 1)
-print(phi)
 
 for e in generate_e(phi):
-    print(e)
-    print(e % phi)
     d = mcd_extended_euclidian(e, phi)[0]
-    print(d)
-    print(d % phi)
 
     if d < 0:
         d += phi
-        print(d)
-        print(d % phi)
-
 
     if e != d and phi % d != 0 and d > 2 and e > 2:
         break
-
 
 msg = [25, 102, 7, 102, 93, 49, 91, 49, 92, 118, 23, 13, 10]
 
